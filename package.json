@@ -1,6 +1,10 @@
 {
-	"name": "svelte-kit",
+	"name": "humans",
 	"version": "0.0.1",
+	"author": "Geydson Santos",
+	"email": "geydson87@gmail.com",
+	"license": "MIT",
+	"private": true,
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
