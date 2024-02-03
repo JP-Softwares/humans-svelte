@@ -1,55 +1,75 @@
 <script>
 	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
+	//import logo from '$lib/images/jp_softwares_logo.png';
 	import github from '$lib/images/github.svg';
 </script>
 
-<header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
+<header class="card-header">
+
+
+	<div class="page-name div-align-center"> <!-- class="corner" -->
+		<h1 class="page-name">
+			HUMANS
+		</h1>
+		
+		<!--
+			<figure class="image is-32x32">
+				<img src={logo} alt="JP Softwares" />
+			</figure>
+		-->
 	</div>
 
 	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
 		<ul>
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>
 			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
-			</li>
 		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
 	</nav>
 
 	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
+		<a href="https://github.com/JP-Softwares/humans-svelte">
 			<img src={github} alt="GitHub" />
 		</a>
 	</div>
 </header>
 
 <style>
+	* {
+		--nav-height: 4em;
+	}
+
 	header {
 		display: flex;
 		justify-content: space-between;
+		height: var(--nav-height);
+		padding: 0 1em;
+		/*background: rgba(255, 255, 255, 0.7);*/
+		/*box-shadow: 15px 15px 15px #0000000e;*/
 	}
 
-	.corner {
+	div.page-name {
+		height: 100%;
+	}
+
+	h1.page-name {
+		font-size: 2rem;
+		font-family: 'Montserrat', sans-serif;
+		font-weight: bold;
+	}
+
+	.div-align-center {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.corner/*, figure*/ {
 		width: 3em;
-		height: 3em;
+		height: 100%;
 	}
 
-	.corner a {
+	.corner a/*, figure*/ {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -66,47 +86,56 @@
 	nav {
 		display: flex;
 		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
+		margin-left: -6em;
 	}
 
 	ul {
 		position: relative;
 		padding: 0;
 		margin: 0;
-		height: 3em;
+		height: 100%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		list-style: none;
-		background: var(--background);
+		/*background: var(--background);*/
 		background-size: contain;
 	}
 
 	li {
 		position: relative;
 		height: 100%;
+		width: 7rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
-
+	/*
 	li[aria-current='page']::before {
 		--size: 6px;
 		content: '';
 		width: 0;
 		height: 0;
 		position: absolute;
-		top: 0;
+		top: var(--size);
 		left: calc(50% - var(--size));
 		border: var(--size) solid transparent;
 		border-top: var(--size) solid var(--color-theme-1);
+	}*/
+
+	li[aria-current='page']::after {
+		--size: 1px;
+		content: '';
+		width: 100%;
+		height: 0;
+		position: absolute;
+		bottom: 0;
+		border: var(--size) solid #242222;
+	}
+
+	li a {
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 700;
 	}
 
 	nav a {
@@ -115,8 +144,7 @@
 		align-items: center;
 		padding: 0 0.5rem;
 		color: var(--color-text);
-		font-weight: 700;
-		font-size: 0.8rem;
+		font-size: 1rem;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
 		text-decoration: none;
