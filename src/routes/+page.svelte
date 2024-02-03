@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Humans</title>
 	<meta name="description" content="" />
 </svelte:head>
 

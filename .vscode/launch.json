@@ -10,7 +10,7 @@
             "request": "launch",
             "type": "node-terminal",
             "preLaunchTask": "yarn: build"
-        },
+        }/*,
         {
             "type": "node",
             "request": "launch",
@@ -19,6 +19,6 @@
                 "<node_internals>/**"
             ],
             "program": "//${workspaceFolder}\\build" //${workspaceFolder}\\build
-        }
+        }*/
     ]
 }
