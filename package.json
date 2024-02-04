@@ -2,7 +2,7 @@
 	"name": "humans",
 	"version": "0.0.1",
 	"author": "Geydson Santos",
-	"email": "geydson87@gmail.com",
+	"email": "email",
 	"license": "MIT",
 	"private": true,
 	"scripts": {
@@ -32,7 +32,16 @@
 		"svelte-check": "^3.0.1",
 		"tslib": "^2.4.1",
 		"typescript": "^4.9.3",
-		"vite": "^4.0.0"
+		"vite": "^4.0.0",
+		"@rollup/plugin-commonjs": "^11.0.0",
+		"@rollup/plugin-node-resolve": "^7.0.0",
+		"rollup": "^1.20.0",
+		"rollup-plugin-livereload": "^1.0.0",
+		"rollup-plugin-svelte": "^5.0.3",
+		"rollup-plugin-terser": "^5.1.2"
+	},
+	"dependencies": {
+	  "sirv-cli": "^0.4.4"
 	},
 	"type": "module"
 }
