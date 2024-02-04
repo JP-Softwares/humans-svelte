@@ -88,7 +88,7 @@
 		display: flex;
 		justify-content: center;
 		height: 100%;
-		margin-left: - var(--page-name-size);;
+		margin-left: calc(-2vw - var(--page-name-size)) ;
 	}
 
 	ul {
