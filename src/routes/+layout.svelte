@@ -11,7 +11,9 @@
 	</main>
 
 	<footer>
-		
+		<p>
+			Desenvolvido por JP Softwares
+		</p>
 	</footer>
 </div>
 
@@ -38,12 +40,16 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		padding: 12px;
+		padding: 1rem;
+	}
+
+	footer p {
+		font-size: 1rem;
 	}
 
 	@media (min-width: 480px) {
 		footer {
-			padding: 12px 0;
+			padding: 1rem 0;
 		}
 	}
 </style>

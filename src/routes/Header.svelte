@@ -29,7 +29,7 @@
 
 	<div class="corner">
 		<a href="https://github.com/JP-Softwares/humans-svelte">
-			<img src={github} alt="GitHub" />
+				<img src={github} alt="GitHub" />
 		</a>
 	</div>
 </header>
@@ -53,7 +53,7 @@
 	}
 
 	h1.page-name {
-		font-size: 2rem;
+		font-size: clamp(1.5rem, 2.5vw, 10rem);
 		font-family: 'Montserrat', sans-serif;
 		font-weight: bold;
 	}
@@ -86,7 +86,7 @@
 	nav {
 		display: flex;
 		justify-content: center;
-		margin-left: -6em;
+		height: 100%;
 	}
 
 	ul {
@@ -105,7 +105,7 @@
 	li {
 		position: relative;
 		height: 100%;
-		width: 7rem;
+		width: 100%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -136,15 +136,16 @@
 	li a {
 		font-family: 'Montserrat', sans-serif;
 		font-weight: 700;
+		margin: 0 clamp(0rem, 0.5vw, 10rem);
 	}
 
 	nav a {
 		display: flex;
 		height: 100%;
 		align-items: center;
-		padding: 0 0.5rem;
+		padding: 0 0.5em;
 		color: var(--color-text);
-		font-size: 1rem;
+		font-size: clamp(1rem, 1.5vw, 5rem);
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
 		text-decoration: none;
@@ -153,5 +154,11 @@
 
 	a:hover {
 		color: var(--color-theme-1);
+	}
+
+	@media (min-width: 480px) {
+		nav {
+			margin-left: -6em;
+		}
 	}
 </style>
