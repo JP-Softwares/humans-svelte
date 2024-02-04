@@ -37,6 +37,7 @@
 <style>
 	* {
 		--nav-height: 4em;
+		--page-name-size: clamp(1.5rem, 2.5vw, 10rem);
 	}
 
 	header {
@@ -53,7 +54,7 @@
 	}
 
 	h1.page-name {
-		font-size: clamp(1.5rem, 2.5vw, 10rem);
+		font-size: var(--page-name-size);
 		font-family: 'Montserrat', sans-serif;
 		font-weight: bold;
 	}
@@ -87,7 +88,7 @@
 		display: flex;
 		justify-content: center;
 		height: 100%;
-		margin-left: -6em;
+		margin-left: - var(--page-name-size);;
 	}
 
 	ul {
