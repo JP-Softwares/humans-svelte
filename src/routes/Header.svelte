@@ -87,6 +87,7 @@
 		display: flex;
 		justify-content: center;
 		height: 100%;
+		margin-left: -6em;
 	}
 
 	ul {
@@ -154,11 +155,5 @@
 
 	a:hover {
 		color: var(--color-theme-1);
-	}
-
-	@media (min-width: 480px) {
-		nav {
-			margin-left: -6em;
-		}
 	}
 </style>
