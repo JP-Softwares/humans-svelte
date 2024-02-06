@@ -10,7 +10,7 @@
 		<slot />
 	</main>
 
-	<footer>
+	<footer class="card-footer">
 		<p>
 			Desenvolvido por JP Softwares
 		</p>
