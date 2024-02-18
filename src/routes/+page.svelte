@@ -1,11 +1,16 @@
 <script>
-	function enviarMensagem() {
+	import { enhance } from '$app/forms';
+
+	/**
+	 * @param {any} result
+	 */
+	async function mensagemEnviada(result) {
 		let mensagem = jQuery(".input-chat").val();
 
 		if(mensagem != "") {
 			jQuery(".input-chat").val(""); //Limpa o campo
 
-			//console.log(mensagem);
+			console.log(result.data);
 		}
 	}
 </script>
@@ -17,12 +22,24 @@
 
 <div class="chat-content">
 	<div>
-		<form on:submit={enviarMensagem}>
+		<form method="POST" action="?/enviarMensagem" use:enhance={({ formElement, formData, action, cancel, submitter }) => {
+			// `formElement` is this `<form>` element
+			// `formData` is its `FormData` object that's about to be submitted
+			// `action` is the URL to which the form is posted
+			// calling `cancel()` will prevent the submission
+			// `submitter` is the `HTMLElement` that caused the form to be submitted
+	
+			return async ({ result, update }) => {
+				mensagemEnviada(result);
+				// `result` is an `ActionResult` object
+				// `update` is a function which triggers the default logic that would be triggered if this callback wasn't set
+			};
+		}}>
 			<div>
 				<div class="chat-box">
 					<input class="input input-chat" type="text">
 
-					<input class="button button-icon material-icons" type="submit" value="&#xe163;"/>
+					<input class="button-icon material-icons" type="submit" value="&#xe163;"/>
 				</div>
 			</div>
 		</form>
@@ -44,10 +61,31 @@
 	}
 
 	.button-icon {
+    	align-items: center;
+		border-radius: 4px;
+		box-shadow: none;
+		display: inline-flex;
+		font-size: 1rem;
+		height: 2.5em;
 		position: absolute;
 		border: none;
 		background-color: #00000000;
 		color: #000;
+		cursor: pointer;
+		justify-content: center;
+		padding-bottom: calc(0.5em - 1px);
+		padding-left: 1em;
+		padding-right: 1em;
+		padding-top: calc(0.5em - 1px);
+		text-align: center;
+		white-space: nowrap;
+    	vertical-align: top;
+		line-height: 1.5;
+	}
+
+	.button-icon:active {
+		border: none;
+		background-color: #00000000;
 	}
 
 	.button-icon:hover {
