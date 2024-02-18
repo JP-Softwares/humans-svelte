@@ -1,5 +1,5 @@
 <script>
-	import { enhance } from '$app/forms';
+	import { applyAction, enhance } from '$app/forms';
 
 	/**
 	 * @param {any} result
@@ -37,7 +37,7 @@
 		}}>
 			<div>
 				<div class="chat-box">
-					<input class="input input-chat" type="text">
+					<input name="chat_message" class="input input-chat" type="text" autocomplete="off">
 
 					<input class="button-icon material-icons" type="submit" value="&#xe163;"/>
 				</div>

@@ -4,9 +4,11 @@ import { SPRING_URL } from '$env/static/private';
 
 export const actions = {
 
-    enviarMensagem: async (event) => {
+    enviarMensagem: async ({request, cookies}) => {
         //console.log(SPRING_URL);
 
-        return SPRING_URL;
+        const data = await request.formData();
+
+        return "Você digitou: " + data.get('chat_message') + ". Valor de SPRING_URL: " + SPRING_URL;
     }
 }
