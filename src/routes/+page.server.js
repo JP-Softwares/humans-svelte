@@ -8,13 +8,19 @@ export const actions = {
         //console.log(SPRING_URL);
 
         const data = await request.formData();
+        try {
 
-        let message = await (await fetch(`${SPRING_URL}/chat`, {
-            method: 'POST'
-        })).text();
+            let message = await (await fetch(`${SPRING_URL}/chat`, {
+                method: 'POST'
+            })).text();
+    
+            console.log(message);
+    
+            return "Você digitou: " + data.get('chat_message') + ". Valor de SPRING_URL: " + SPRING_URL + ". Retorno da API: " + message;
 
-        console.log(message);
-
-        return "Você digitou: " + data.get('chat_message') + ". Valor de SPRING_URL: " + SPRING_URL + ". Retorno da API: " + message;
+        }catch (error) {
+            console.log(error);
+            return null;
+        }
     }
 }
