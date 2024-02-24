@@ -1,10 +1,12 @@
 <script>
+	
 	import { invalidateAll, goto } from '$app/navigation';
+	
 	import { applyAction, enhance, deserialize } from '$app/forms';
 
-	let input_chat_message = "";
+	import { browser } from '$app/environment';
 
-	$: console.log("input_chat_message:" + input_chat_message);
+	let input_chat_message = "";
 
 	/**
 	 * @param {any} result
@@ -15,6 +17,11 @@
 
 	function limparCampo() {
 		jQuery('input[name="chat_message"]').val("");
+		input_chat_message = "";
+	}
+
+	function validateForm() {
+		return input_chat_message == "";
 	}
 	
 	//$: input_chat_message != "" ? jQuery('form').attr('use:enhance') : jQuery('form').is('[use:enhance]') ? jQuery('form').removeAttr('use:enhance') : null;
@@ -33,18 +40,21 @@
 			// `action` is the URL to which the form is posted
 			// calling `cancel()` will prevent the submission
 			// `submitter` is the `HTMLElement` that caused the form to be submitted
+
+			if(validateForm()) cancel();
+
 			limparCampo();
 
 			return async ({ result, update }) => {
 
-				mensagemEnviada(result);
-				// `result` is an `ActionResult` object
-				// `update` is a function which triggers the default logic that would be triggered if this callback wasn't set
+			mensagemEnviada(result);
+			// `result` is an `ActionResult` object
+			// `update` is a function which triggers the default logic that would be triggered if this callback wasn't set
 			};
-		}}>
+			}}>
 			<div>
 				<div class="chat-box">
-					<input name="chat_message" class="input input-chat" type="text" autocomplete="off" aria-invalid="false">
+					<input bind:value={input_chat_message} name="chat_message" class="input input-chat" type="text" autocomplete="off" aria-invalid="false">
 
 					<input class="button-icon material-icons" type="submit" value="&#xe163;"/>
 				</div>
