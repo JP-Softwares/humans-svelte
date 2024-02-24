@@ -11,10 +11,11 @@ export const actions = {
         try {
 
             let message = await (await fetch(`${SPRING_URL}/chat`, {
-                method: 'POST'
+                method: 'POST',
+                body: data
             })).text();
     
-            console.log(message);
+            //console.log(message);
     
             return "Você digitou: " + data.get('chat_message') + ". Valor de SPRING_URL: " + SPRING_URL + ". Retorno da API: " + message;
 

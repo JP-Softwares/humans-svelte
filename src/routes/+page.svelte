@@ -1,18 +1,23 @@
 <script>
-	import { applyAction, enhance } from '$app/forms';
+	import { invalidateAll, goto } from '$app/navigation';
+	import { applyAction, enhance, deserialize } from '$app/forms';
+
+	let input_chat_message = "";
+
+	$: console.log("input_chat_message:" + input_chat_message);
 
 	/**
 	 * @param {any} result
 	 */
-	async function mensagemEnviada(result) {
-		let mensagem = jQuery(".input-chat").val();
-
-		if(mensagem != "") {
-			jQuery(".input-chat").val(""); //Limpa o campo
-
-			console.log(result.data);
-		}
+	function mensagemEnviada(result) {
+		console.log(result.data);
 	}
+
+	function limparCampo() {
+		jQuery('input[name="chat_message"]').val("");
+	}
+	
+	//$: input_chat_message != "" ? jQuery('form').attr('use:enhance') : jQuery('form').is('[use:enhance]') ? jQuery('form').removeAttr('use:enhance') : null;
 </script>
 
 <svelte:head>
@@ -28,8 +33,10 @@
 			// `action` is the URL to which the form is posted
 			// calling `cancel()` will prevent the submission
 			// `submitter` is the `HTMLElement` that caused the form to be submitted
-	
+			limparCampo();
+
 			return async ({ result, update }) => {
+
 				mensagemEnviada(result);
 				// `result` is an `ActionResult` object
 				// `update` is a function which triggers the default logic that would be triggered if this callback wasn't set
@@ -37,7 +44,7 @@
 		}}>
 			<div>
 				<div class="chat-box">
-					<input name="chat_message" class="input input-chat" type="text" autocomplete="off">
+					<input name="chat_message" class="input input-chat" type="text" autocomplete="off" aria-invalid="false">
 
 					<input class="button-icon material-icons" type="submit" value="&#xe163;"/>
 				</div>
