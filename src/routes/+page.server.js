@@ -4,24 +4,31 @@ import { SPRING_URL } from '$env/static/private';
 
 export const actions = {
 
-    enviarMensagem: async ({request, cookies}) => {
-        //console.log(SPRING_URL);
-
-        const data = await request.formData();
+    grupos: async () => {
         try {
 
-            let message = await (await fetch(`${SPRING_URL}/chat`, {
-                method: 'POST',
-                body: data
-            })).text();
+            let message = await (await fetch(`${SPRING_URL}/Grupo`, {
+                method: 'GET',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                }
+            })).json();
+
+            console.log(JSON.stringify(message));
     
-            //console.log(message);
-    
-            return "Você digitou: " + data.get('chat_message') + ". Valor de SPRING_URL: " + SPRING_URL + ". Retorno da API: " + message;
+            return message;
 
         }catch (error) {
             console.log(error);
             return null;
         }
     }
+}
+
+export function load({ params }) {
+	return {
+		spring_base_url: SPRING_URL,
+        getGrupos: actions.grupos()
+	};
 }
