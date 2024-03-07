@@ -2,33 +2,16 @@ import { SPRING_URL } from '$env/static/private';
 
 //import type { Actions } from './$types';
 
-export const actions = {
+var localhost = '';
 
-    grupos: async () => {
-        try {
+/** @type {import('./$types').PageServerLoad} */
+export async function load({ url, params }) {
+    localhost = url.href;
 
-            let message = await (await fetch(`${SPRING_URL}/Grupo`, {
-                method: 'GET',
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                }
-            })).json();
+    let grupos = await(await fetch(localhost + "api/_/groups")).json();
 
-            console.log(JSON.stringify(message));
-    
-            return message;
-
-        }catch (error) {
-            console.log(error);
-            return null;
-        }
-    }
-}
-
-export function load({ params }) {
 	return {
 		spring_base_url: SPRING_URL,
-        getGrupos: actions.grupos()
+        grupos: grupos
 	};
 }
