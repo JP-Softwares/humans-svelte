@@ -15,10 +15,7 @@
 
 	let mensagens = getMensagensLoad();
 
-	$: if( browser ) console.log(jQuery(".div_mensagens").children().length);
-
 	onMount(() => {
-		console.log(jQuery(".div_mensagens").children().length);
 
 		scrollToEnd();
 	})
@@ -108,9 +105,9 @@
 			</form>
 		</div>
 
-		<div class="div_mensagens>
+		<div class="div_mensagens">
 			{#each mensagens as mensagem}
-				<div class={"div_mensagem_linha" + (mensagem.nome_usuario == nome_usuario ? " own_message" : "")}>
+				<div class={"div_mensagem_linha" + (mensagem.nomeUsuario == nome_usuario ? " own_message" : "")}>
 					<div class="card div_mensagem">
 						<div class="div_mensagem_cabecalho">
 							<div class="div_mensagem_cabecalho_title">
