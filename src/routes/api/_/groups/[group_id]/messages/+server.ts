@@ -1,4 +1,5 @@
 import { SPRING_URL } from '$env/static/private';
+import { gerarErro } from '$lib/server/default_error';
 import { json } from '@sveltejs/kit';
 
 //import type { Actions } from './$types';
@@ -16,10 +17,7 @@ export async function GET(RequestEvent) {
 
         return json(message, {status: 200});
     }catch (error) {
-        const erro: any = error;
-        const { message } = erro;
-        console.log("Erro: " + message);
-        return json({sucess: false, message: message}, {status: 500});;
+        return gerarErro(error, 500);
     }
 }
 

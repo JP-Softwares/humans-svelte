@@ -30,14 +30,13 @@
 		{#each grupos as grupo}
 			<a href={"/groups/" + grupo.id}>
 				<div class="card card-group">
-					<div>
-						<p class="title">
+					<div class="div-grupo">
+						<p class="title grupo-nome">
 							{grupo.nome}
 						</p>
 					</div>
 					
 					<div>
-						
 						<p class="card-group-text">
 							Última interação: {new Date(grupo.ultimaInteracao).toLocaleDateString("pt-br") + " " + new Date(grupo.ultimaInteracao).toLocaleTimeString("pt-br")}
 						</p>
@@ -59,7 +58,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 2rem;
+		padding: 1rem;
+		gap: 1rem;
 		width: 100%;
 		border-radius: 1rem;
 		min-height: 5rem;
@@ -71,6 +71,14 @@
 
 	.card-group-text {
 		color: #000;
-		font-size: 1.5rem;
+		font-size: clamp(0rem, 3vw, 1rem);
+	}
+
+	.div-grupo {
+		width: clamp(0rem, 20vw, 10rem);
+	}
+
+	.grupo-nome {
+		font-size: clamp(0rem, 4vw, 2rem);
 	}
 </style>

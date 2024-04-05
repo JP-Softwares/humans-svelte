@@ -7,11 +7,15 @@
 	import { onMount } from 'svelte';
 	import { children } from 'svelte/internal';
 
+	import * as animaisJSON from '$lib/animais.json';
+
 	export let data;
+
+	const animais = animaisJSON.default;
 
 	let input_chat_message = "";
 
-	let nome_usuario = "Usuario1";
+	let nome_usuario = animais[Math.floor(Math.random() * animais.length)] + "" + Math.floor(Math.random() * 10000);
 
 	let mensagens = getMensagensLoad();
 
@@ -98,7 +102,7 @@
 						<input type="hidden" name="nome_usuario" bind:value={nome_usuario}/>
 
 						<input bind:value={input_chat_message} name="chat_message" class="input input-chat" type="text" autocomplete="off" aria-invalid="false">
-		
+
 						<input class="button-icon material-icons" type="submit" value="&#xe163;"/>
 					</div>
 				</div>
@@ -130,8 +134,13 @@
 				</div>
 			{/each}
 		</div>
+
+		<div class="flex">
+			Seu nome é {nome_usuario}
+		</div>
 	</div>
 </div>
+
 
 <style>
 	#root {
@@ -161,7 +170,9 @@
 		overflow-y: auto;
         overscroll-behavior-y: contain;
         scroll-snap-type: y mandatory;
-		max-height: 32rem;
+		max-height: clamp(0rem, 65vh, 32rem);
+		border: 1px solid #f0f0f0;
+		border-radius: 1rem;
 	}
 
 	
@@ -208,7 +219,7 @@
 		position: absolute;
 		border: none;
 		background-color: #00000000;
-		color: #000;
+		color: #00002c;
 		cursor: pointer;
 		justify-content: center;
 		padding-bottom: calc(0.5em - 1px);

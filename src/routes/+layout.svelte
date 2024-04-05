@@ -18,7 +18,9 @@
 	</footer>
 </div>
 
-<style>
+	<style>
+		@import '../global.css';
+
 	.app {
 		display: flex;
 		flex-direction: column;

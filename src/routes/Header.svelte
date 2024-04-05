@@ -60,6 +60,6 @@
 		display: flex;
 		align-items: center;
 		position: absolute;
-		margin-left: 2rem;
+		margin-left: clamp(0rem, 2vw, 2rem);
 	}
 </style>
