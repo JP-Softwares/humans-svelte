@@ -1,9 +1,19 @@
 import { SPRING_URL } from '$env/static/private';
 
+import WebSocket from 'ws';
+
 //import type { Actions } from './$types';
 
 var groupidAtual = 0;
 var localhost = '';
+
+const address = `ws://localhost:2048`;
+
+const ws = new WebSocket(address);
+
+ws.addEventListener("open", () => {
+    console.log("We are connected!");
+});
 
 export const actions = {
 
@@ -22,6 +32,8 @@ export const actions = {
                 },
                 body: JSON.stringify(request)
             })).text();
+            
+            ws.send(JSON.stringify(request));
     
             //console.log(message);
     
@@ -35,11 +47,13 @@ export const actions = {
 }
 
 export async function load({url, params}) {
+
     localhost = url.href.replace(url.pathname, "");
 
     let mensagens = await (await fetch(`${localhost}/api/_/groups/${params.group_id}/messages`)).json();
 
     groupidAtual = parseInt(params.group_id);
+
     return {
         url_localhost: localhost,
         groupid: groupidAtual,

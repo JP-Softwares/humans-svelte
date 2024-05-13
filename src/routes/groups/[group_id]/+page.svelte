@@ -1,7 +1,6 @@
 <script>
 	import { browser } from '$app/environment';
 
-	
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
