@@ -1,19 +1,9 @@
 import { SPRING_URL } from '$env/static/private';
 
-import WebSocket from 'ws';
-
 //import type { Actions } from './$types';
 
 var groupidAtual = 0;
 var localhost = '';
-
-const address = `ws://localhost:2048`;
-
-const ws = new WebSocket(address);
-
-ws.addEventListener("open", () => {
-    console.log("We are connected!");
-});
 
 export const actions = {
 
