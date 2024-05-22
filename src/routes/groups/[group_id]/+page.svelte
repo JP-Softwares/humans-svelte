@@ -15,7 +15,7 @@
 	if (browser) {
 		nome_usuario = getCookie(document, "username", () => animais[Math.floor(Math.random() * animais.length)] + "" + Math.floor(Math.random() * 10000));
 
-		let ws =  new WebSocket('ws://' + data.url_localhost.replace("http://", ""));
+		/*let ws =  new WebSocket('ws://' + data.url_localhost.replace("http://", ""));
 
 		ws.addEventListener('open', function (event) {
 			ws.send('Hello Server!');
@@ -24,7 +24,7 @@
 		// Listen for messages
 		ws.addEventListener('message', function (event) {
 			console.log('Message from server ', event.data);
-		});
+		});*/
 	}
 
 	let input_chat_message = "";
